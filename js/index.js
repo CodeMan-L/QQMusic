@@ -34,28 +34,10 @@ const queryData = function queryData() {
 
 const binding = function binding(lyric) {
     // 歌词解析
-    let data = [];/* {
-        // minutes: '00',
-        // seconds: '01',
-        // text: '歌词'
-    } */
-    // lyric = lyric.replace(/(ti|ar|al|by):/g, (val, $1) => {
-    //     let obTab = {
-    //         ti: '歌曲:',
-    //         ar: '作曲:',
-    //         al: '专辑:',
-    //         by: '演唱:'
-    //     };
-    //     return obTab[$1] || val;
-    // });
-    console.log(lyric);
-    // ((?:^\[)\d{2})((?:^:)(\d{2}.\d{2}))((?:^\])\S+(?:\\n$))
-    ///\[(\d+)&#58;(\d+)&#46;(?:\d+)\]([^&#;]+)(?:&#10;)?/g
+    let data = [];
     lyric.replace(/\[(\d+):(\d+).(?:\d+)\]([^\n]+)(?:\n)?/g, (_,minutes, seconds, text) => {
         data.push({ minutes, seconds, text });
     });
-    console.log(data);
-    // console.log("NO.1",minutes);
     // 歌词绑定
     let str = '';
     data.forEach(item => {
